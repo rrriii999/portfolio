@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="藤田力輝のポートフォリオ。関西学院大学で情報工学を専攻し、C・Java・Python・HTML/CSSを学習しています。">
+    <title>藤田 力輝 | Portfolio</title>
+
+    <style>
+        :root {
+            --bg: #f5f7fb;
+            --white: #ffffff;
+            --text: #172033;
+            --sub: #667085;
+            --accent: #4f46e5;
+            --accent-dark: #3730a3;
+            --accent-light: #eef2ff;
+            --border: #e5e7eb;
+            --shadow: 0 15px 40px rgba(15, 23, 42, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Helvetica Neue",
+                "Yu Gothic",
+                YuGothic,
+                Arial,
+                sans-serif;
+            line-height: 1.7;
+        }
+
+        /* =========================
+           ナビゲーション
+        ========================= */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(229, 231, 235, 0.8);
+        }
+
+        .nav-inner {
+            max-width: 1050px;
+            margin: auto;
+            padding: 14px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.1rem;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--sub);
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* =========================
+           共通
+        ========================= */
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 90px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title .small {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            margin: 5px 0 10px;
+        }
+
+        .section-title p {
+            color: var(--sub);
+            margin: 0;
+        }
+
+        /* =========================
+           Hero
+        ========================= */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            background: var(--accent-light);
+            border-radius: 50%;
+            right: -180px;
+            top: 100px;
+            filter: blur(2px);
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 750px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 7px 14px;
+            background: var(--accent-light);
+            color: var(--accent);
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.8rem, 7vw, 5rem);
+            line-height: 1.1;
+            margin: 0;
+            letter-spacing: -2px;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+        .hero-subtitle {
+            color: var(--sub);
+            font-size: 1.2rem;
+            margin: 25px 0;
+            max-width: 650px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 13px 25px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+            box-shadow: 0 8px 20px rgba(79, 70, 229, 0.25);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-dark);
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        /* =========================
+           Profile
+        ========================= */
+
+        .profile-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 35px;
+        }
+
+        .profile-info h3 {
+            margin-top: 0;
+            font-size: 1.5rem;
+        }
+
+        .profile-info p {
+            color: var(--sub);
+        }
+
+        .info-list {
+            display: grid;
+            gap: 15px;
+        }
+
+        .info-item {
+            padding: 15px;
+            border-radius: 10px;
+            background: #f8fafc;
+            border: 1px solid var(--border);
+        }
+
+        .info-item strong {
+            display: block;
+            color: var(--accent);
+            font-size: 0.8rem;
+            margin-bottom: 3px;
+        }
+
+        /* =========================
+           Services
+        ========================= */
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            border: 1px solid var(--border);
+            transition: 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow);
+            border-color: #c7d2fe;
+        }
+
+        .service-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            background: var(--accent-light);
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            margin: 0 0 10px;
+        }
+
+        .service-card p {
+            color: var(--sub);
+            font-size: 0.9rem;
+        }
+
+        /* =========================
+           Skills
+        ========================= */
+
+        .skills-container {
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: var(--shadow);
+        }
+
+        .skill {
+            margin-bottom: 25px;
+        }
+
+        .skill:last-child {
+            margin-bottom: 0;
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .skill-header span:last-child {
+            color: var(--accent);
+            font-size: 0.85rem;
+        }
+
+        .bar {
+            height: 9px;
+            background: #e5e7eb;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .bar span {
+            display: block;
+            height: 100%;
+            width: 0;
+            background: var(--accent);
+            border-radius: 20px;
+            transition: width 1.5s ease;
+        }
+
+        /* =========================
+           Why Me
+        ========================= */
+
+        .reasons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .reason {
+            text-align: center;
+            background: white;
+            padding: 30px 20px;
+            border-radius: 18px;
+            border: 1px solid var(--border);
+        }
+
+        .reason-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent);
+        }
+
+        .reason h3 {
+            margin: 5px 0;
+        }
+
+        .reason p {
+            color: var(--sub);
+            font-size: 0.9rem;
+        }
+
+        /* =========================
+           Interests
+        ========================= */
+
+        .interests {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .interest {
+            background: white;
+            padding: 25px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            transition: 0.3s;
+        }
+
+        .interest:hover {
+            transform: translateY(-5px);
+        }
+
+        .interest strong {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .interest p {
+            color: var(--sub);
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        /* =========================
+           CTA
+        ========================= */
+
+        .cta {
+            background: linear-gradient(
+                135deg,
+                #4f46e5,
+                #6366f1
+            );
+            color: white;
+            border-radius: 25px;
+            padding: 60px 30px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(79, 70, 229, 0.25);
+        }
+
+        .cta h2 {
+            font-size: 2rem;
+            margin: 0 0 10px;
+        }
+
+        .cta p {
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .cta .btn {
+            background: white;
+            color: var(--accent);
+        }
+
+        .cta .btn:hover {
+            transform: translateY(-3px);
+        }
+
+        /* =========================
+           Contact
+        ========================= */
+
+        .contact {
+            text-align: center;
+        }
+
+        .email-box {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: white;
+            padding: 15px 20px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        .copy-btn {
+            border: none;
+            background: var(--accent-light);
+            color: var(--accent);
+            padding: 7px 12px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        .copy-btn:hover {
+            background: #dbe4ff;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--sub);
+            font-size: 0.8rem;
+        }
+
+        /* =========================
+           スクロールアニメーション
+        ========================= */
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: 0.8s ease;
+        }
+
+        .fade-in.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =========================
+           スマホ対応
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            section {
+                padding: 65px 0;
+            }
+
+            .profile-grid,
+            .services,
+            .reasons,
+            .interests {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-card {
+                padding: 25px;
+            }
+
+            .skills-container {
+                padding: 25px;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .email-box {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- =========================
+     Navigation
+========================= -->
+
+<nav>
+    <div class="nav-inner">
+        <div class="logo">Riku<span>.</span></div>
+
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </div>
+</nav>
+
+
+<!-- =========================
+     Hero
+========================= -->
+
+<header class="hero">
+    <div class="container">
+
+        <div class="hero-content fade-in">
+
+            <span class="badge">
+                Information Engineering Student
+            </span>
+
+            <h1>
+                藤田 力輝<br>
+                <span>Portfolio.</span>
+            </h1>
+
+            <p class="hero-subtitle">
+                関西学院大学で情報工学を専攻し、
+                ソフトウェア開発を学んでいます。<br>
+                「丁寧・誠実・最後まで」を大切に、
+                一つひとつの仕事に責任を持って取り組みます。
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#services" class="btn btn-primary">
+                    できることを見る →
+                </a>
+
+                <a href="#contact" class="btn btn-secondary">
+                    仕事を依頼する
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+</header>
+
+
+<!-- =========================
+     About
+========================= -->
+
+<section id="about">
+
+    <div class="container">
+
+        <div class="section-title fade-in">
+            <div class="small">ABOUT ME</div>
+            <h2>プロフィール</h2>
+            <p>現在の学習・専門分野について</p>
+        </div>
+
+        <div class="profile-card fade-in">
+
+            <div class="profile-grid">
+
+                <div class="profile-info">
+
+                    <h3>藤田 力輝</h3>
+
+                    <p>
+                        関西学院大学の3年生として、
+                        情報工学を専攻しています。
+                    </p>
+
+                    <p>
+                        大学ではC言語を中心としたプログラミング、
+                        アルゴリズム、データ構造などを学習しています。
+                        現在はJava・Python・HTML/CSSにも
+                        学習範囲を広げています。
+                    </p>
+
+                    <p>
+                        まだ学生ではありますが、
+                        「分からないことをそのままにしない」ことを意識し、
+                        調査・試行錯誤を繰り返しながら問題を解決することを
+                        得意としています。
+                    </p>
+
+                </div>
+
+                <div class="info-list">
+
+                    <div class="info-item">
+                        <strong>UNIVERSITY</strong>
+                        関西学院大学
+                    </div>
+
+                    <div class="info-item">
+                        <strong>YEAR</strong>
+                        大学3年生
+                    </div>
+
+                    <div class="info-item">
+                        <strong>MAJOR</strong>
+                        情報工学
+                    </div>
+
+                    <div class="info-item">
+                        <strong>FOCUS</strong>
+                        ソフトウェア・プログラミング
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     Services
+========================= -->
+
+<section id="services">
+
+    <div class="container">
+
+        <div class="section-title fade-in">
+            <div class="small">SERVICES</div>
+            <h2>対応できること</h2>
+            <p>現在のスキルを活かして対応します</p>
+        </div>
+
+        <div class="services">
+
+            <div class="service-card fade-in">
+
+                <div class="service-icon">💻</div>
+
+                <h3>プログラミング</h3>
+
+                <p>
+                    C・Java・Pythonを使用した
+                    プログラム作成や修正、簡単なツール開発などに
+                    対応します。
+                </p>
+
+            </div>
+
+
+            <div class="service-card fade-in">
+
+                <div class="service-icon">🌐</div>
+
+                <h3>Web制作</h3>
+
+                <p>
+                    HTML・CSSを使用した
+                    シンプルなWebページやプロフィールサイト、
+                    ランディングページの制作に対応します。
+                </p>
+
+            </div>
+
+
+            <div class="service-card fade-in">
+
+                <div class="service-icon">🔧</div>
+
+                <h3>コード修正・改善</h3>
+
+                <p>
+                    エラーの原因調査やコードの修正、
+                    可読性を意識した簡単な改善などにも
+                    対応します。
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     Skills
+========================= -->
+
+<section id="skills">
+
+    <div class="container">
+
+        <div class="section-title fade-in">
+            <div class="small">SKILLS</div>
+            <h2>Technical Skills</h2>
+            <p>現在の学習状況</p>
+        </div>
+
+        <div class="skills-container fade-in">
+
+            <div class="skill">
+                <div class="skill-header">
+                    <span>C</span>
+                    <span>Advanced</span>
+                </div>
+
+                <div class="bar">
+                    <span data-width="85%"></span>
+                </div>
+            </div>
+
+
+            <div class="skill">
+                <div class="skill-header">
+                    <span>Java</span>
+                    <span>Basic</span>
+                </div>
+
+                <div class="bar">
+                    <span data-width="60%"></span>
+                </div>
+            </div>
+
+
+            <div class="skill">
+                <div class="skill-header">
+                    <span>Python</span>
+                    <span>Basic</span>
+                </div>
+
+                <div class="bar">
+                    <span data-width="55%"></span>
+                </div>
+            </div>
+
+
+            <div class="skill">
+                <div class="skill-header">
+                    <span>HTML / CSS</span>
+                    <span>Learning</span>
+                </div>
+
+                <div class="bar">
+                    <span data-width="65%"></span>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     Why Me
+========================= -->
+
+<section>
+
+    <div class="container">
+
+        <div class="section-title fade-in">
+            <div class="small">WHY ME?</div>
+            <h2>安心して依頼してもらうために</h2>
+        </div>
+
+        <div class="reasons">
+
+            <div class="reason fade-in">
+                <div class="reason-number">01</div>
+                <h3>丁寧な対応</h3>
+                <p>
+                    ご要望を確認し、
+                    認識のズレがないように
+                    丁寧にコミュニケーションします。
+                </p>
+            </div>
+
+            <div class="reason fade-in">
+                <div class="reason-number">02</div>
+                <h3>責任感</h3>
+                <p>
+                    引き受けた仕事は最後まで責任を持って
+                    取り組みます。
+                </p>
+            </div>
+
+            <div class="reason fade-in">
+                <div class="reason-number">03</div>
+                <h3>学習力</h3>
+                <p>
+                    未経験の技術でも調査・学習しながら
+                    解決方法を考えます。
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     Interests
+========================= -->
+
+<section>
+
+    <div class="container">
+
+        <div class="section-title fade-in">
+            <div class="small">INTERESTS</div>
+            <h2>プライベート</h2>
+        </div>
+
+        <div class="interests">
+
+            <div class="interest fade-in">
+                <strong>🏋️ Fitness</strong>
+                <p>
+                    筋トレや身体づくりに興味があります。
+                </p>
+            </div>
+
+            <div class="interest fade-in">
+                <strong>🎮 Gaming</strong>
+                <p>
+                    PCでFPSゲームなどをプレイしています。
+                </p>
+            </div>
+
+            <div class="interest fade-in">
+                <strong>🍜 Ramen</strong>
+                <p>
+                    二郎系、辛い系、つけ麺が好きです。
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CTA
+========================= -->
+
+<section>
+
+    <div class="container">
+
+        <div class="cta fade-in">
+
+            <h2>まずはお気軽にご相談ください。</h2>
+
+            <p>
+                「こんなことをお願いできる？」という
+                ご相談でも大歓迎です。
+            </p>
+
+            <a
+                href="mailto:riku250601@icloud.com?subject=お仕事のご相談"
+                class="btn"
+            >
+                お仕事について相談する →
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     Contact
+========================= -->
+
+<section id="contact">
+
+    <div class="container">
+
+        <div class="section-title fade-in">
+            <div class="small">CONTACT</div>
+            <h2>お問い合わせ</h2>
+            <p>お仕事のご相談はこちらから</p>
+        </div>
+
+        <div class="contact fade-in">
+
+            <div class="email-box">
+
+                <span id="email">
+                    riku250601@icloud.com
+                </span>
+
+                <button class="copy-btn" onclick="copyEmail()">
+                    コピー
+                </button>
+
+            </div>
+
+            <br><br>
+
+            <a
+                href="https://github.com/rrriii999/rrriii999"
+                target="_blank"
+                class="btn btn-secondary"
+            >
+                GitHubを見る →
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer>
+    © 2026 Riku Fujita. All Rights Reserved.
+</footer>
+
+
+<script>
+
+    /* =========================
+       スクロール表示
+    ========================= */
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add("show");
+
+                    /* スキルバーをアニメーション */
+                    const bars =
+                        entry.target.querySelectorAll(".bar span");
+
+                    bars.forEach(bar => {
+                        bar.style.width =
+                            bar.dataset.width;
+                    });
+
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.15
+        }
+    );
+
+
+    document
+        .querySelectorAll(".fade-in")
+        .forEach(element => {
+            observer.observe(element);
+        });
+
+
+    /* =========================
+       メールコピー
+    ========================= */
+
+    function copyEmail() {
+
+        const email =
+            document.getElementById("email").textContent;
+
+        navigator.clipboard.writeText(email);
+
+        const button =
+            document.querySelector(".copy-btn");
+
+        button.textContent = "コピーしました ✓";
+
+        setTimeout(() => {
+            button.textContent = "コピー";
+        }, 2000);
+    }
+
+</script>
+
+</body>
+</html>
